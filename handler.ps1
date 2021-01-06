@@ -4,7 +4,7 @@ Function Get-Handler {
       [Parameter(Position=1,Mandatory=$true)][System.Net.HttpListenerResponse]$Response
    )
 
-   Write-Host $ce
+   $ce
 
    $response.StatusCode = [int]([System.Net.HttpStatusCode]::OK)
 }

@@ -67,9 +67,9 @@ param(
 . ./handler.ps1
 
 if(${env:PORT}) {
-   $url = "http://localhost:${env:PORT}/"
+   $url = "http://*:${env:PORT}/"
 } else {
-   $url = "http://localhost:8080/"
+   $url = "http://*:8080/"
 }
 
 Write-Host "Listening URL: ${url}"

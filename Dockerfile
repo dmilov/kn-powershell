@@ -4,10 +4,6 @@ ENV PORT 8080
 
 WORKDIR /root
 
-COPY CloudNative.CloudEvents.dll CloudNative.CloudEvents.dll
-COPY handler.ps1 handler.ps1
-COPY CloudEventsHttp.psd1 CloudEventsHttp.psm1 server.ps1 ./
-
 # Set terminal. If we don't do this, weird readline things happen.
 RUN echo "/usr/bin/pwsh" >> /etc/shells && \
     echo "/bin/pwsh" >> /etc/shells && \
@@ -16,5 +12,9 @@ RUN echo "/usr/bin/pwsh" >> /etc/shells && \
     find / -name "net45" | xargs rm -rf && \
     tdnf erase -y unzip && \
     tdnf clean all
+
+COPY CloudNative.CloudEvents.dll CloudNative.CloudEvents.dll
+COPY CloudEventsHttp.psd1 CloudEventsHttp.psm1 server.ps1 ./
+COPY handler.ps1 handler.ps1
 
 CMD ["pwsh","./server.ps1"]
