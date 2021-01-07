@@ -8,8 +8,7 @@ Function Get-Handler {
    Write-Host "  Source: $($cloudEvent.Source)"
    Write-Host "  Subject: $($cloudEvent.Subject)"
    Write-Host "  Id: $($cloudEvent.Id)"
-   $data = [System.Text.Encoding]::UTF8.GetString($cloudEvent.data)
-   Write-Host "  Data: $data"
+   Write-Host "  Data: $($cloudEvent.data.Key)"
 
    $response.StatusCode = [int]([System.Net.HttpStatusCode]::OK)
 }

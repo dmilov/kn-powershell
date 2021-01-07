@@ -44,19 +44,21 @@ docker run -e PORT=8080 -it --rm -p 8080:8080 lamw/kn-echo:latest
 
 # now in a separate window or use -d in the docker cmd above to detach
 
-# Launch PowerShell
-pwsh
+# Test both Structured and Binary Mode
+./test.sh
+Testing Structured Mode ...
+Testing Binary Mode ...
+See docker container console for output
 
-# Run test Client
-./client.ps1
-Status Code: 200
-
-# Output from the console running Docker image
+# Output from docker container console
 Cloud Event
-  Source: urn:test
+  Source: "source-123"
   Subject:
-  Id: return-cloud-event
-  Data: {
-  "a": "b"
-}
+  Id: "id-123"
+  Data:
+Cloud Event
+  Source: "source-123"
+  Subject: subject-123"
+  Id: "id-123"
+  Data:
 ```
