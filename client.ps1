@@ -1,5 +1,5 @@
 # Import SDK Module
-Import-Module (Join-Path ($PSScriptRoot | Split-Path) 'CloudEventsHttp.psd1')
+Import-Module ./CloudEventsHttp.psd1
 
 # 1. Create Cloud Event that produces NoContent
 $cloudEvent1 = New-CloudEvent `
