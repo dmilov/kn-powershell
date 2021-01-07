@@ -120,12 +120,16 @@ param(
 
    if ($ContentMode -eq [CloudNative.CloudEvents.ContentMode]::Binary) {
       $bodyData = $null
+      
+      if ($cloudEvent.DataContentType -ne $null) {
+         $result.Headers.Add('Content-Type', $cloudEvent.DataContentType)
+      }
+      
       if ($cloudEvent.Data -is [byte[]]) {
          $bodyData = $cloudEvent.Data
       }
       elseif ($cloudEvent.Data -is [string]) {
          $bodyData = [System.Text.Encoding]::UTF8.GetBytes($cloudEvent.Data.ToString())
-
       }
       elseif ($cloudEvent.Data -is [IO.Stream]) {
          $buffer = New-Object 'byte[]' -ArgumentList 1024
@@ -224,7 +228,7 @@ param(
            }
 
            if ($httpHeader.Key.StartsWith($HttpHeaderPrefix, [StringComparison]::InvariantCultureIgnoreCase)) {
-               $headerValue = $httpHeader.Value
+               $headerValue = $httpHeader.Value[0]
                $name = $httpHeader.Key.Substring(3);
 
                # abolished structures in headers in 1.0
