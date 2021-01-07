@@ -4,7 +4,12 @@ Function Get-Handler {
       [Parameter(Position=1,Mandatory=$true)][System.Net.HttpListenerResponse]$Response
    )
 
-   $ce
+   Write-Host "Cloud Event"
+   Write-Host "  Source: $($cloudEvent.Source)"
+   Write-Host "  Subject: $($cloudEvent.Subject)"
+   Write-Host "  Id: $($cloudEvent.Id)"
+   $data = [System.Text.Encoding]::UTF8.GetString($cloudEvent.data)
+   Write-Host "  Data: $data"
 
    $response.StatusCode = [int]([System.Net.HttpStatusCode]::OK)
 }
