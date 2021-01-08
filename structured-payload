@@ -1,0 +1,56 @@
+{
+	"source": "foo",
+	"type": "bar",
+	"id": "123",
+	"specversion": "1.0",
+    "data": {
+        "Key": 426642,
+        "ChainId": 426642,
+        "CreatedTime": "2021-01-07T14:18:25.292999Z",
+        "UserName": "vpxuser:VSPHERE.LOCAL\\vpxd-extension-767f8016-870d-4a98-a457-8247454fa759",
+        "Datacenter": {
+            "Name": "Primp-Datacenter",
+            "Datacenter": {
+                "Type": "Datacenter",
+                "Value": "datacenter-3"
+            }
+        },
+        "ComputeResource": {
+            "Name": "NUC-Cluster",
+            "ComputeResource": {
+                "Type": "ClusterComputeResource",
+                "Value": "domain-c28"
+            }
+        },
+        "Host": {
+            "Name": "nuc11-pro.primp-industries.local",
+            "Host": {
+                "Type": "HostSystem",
+                "Value": "host-2094"
+            }
+        },
+        "Vm": null,
+        "Ds": null,
+        "Net": null,
+        "Dvs": null,
+        "FullFormattedMessage": "File upload to path '[nfs]vCLS (24)/hdcs.cab' was initiated from '@' and completed with status 'True'",
+        "ChangeTag": "",
+        "EventTypeId": "DatastoreFileUploadEvent",
+        "Severity": "info",
+        "Message": "",
+        "Arguments": [{
+            "Key": "sourceOfOperation",
+            "Value": "@"
+        }, {
+            "Key": "targetPath",
+            "Value": "[nfs]vCLS (24)/hdcs.cab"
+        }, {
+            "Key": "succeeded",
+            "Value": true
+        }],
+        "ObjectId": "",
+        "ObjectType": "",
+        "ObjectName": "",
+        "Fault": null
+    }
+}

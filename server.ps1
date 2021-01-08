@@ -45,11 +45,6 @@ param(
       $cloudEvent = ConvertFrom-HttpMessage -Headers $headers -Body $bodyData
 
       if ( $cloudEvent -ne $null ) {
-         Write-Host "Cloud Event"
-         Write-Host "  Source: $($cloudEvent.Source)"
-         Write-Host "  Subject: $($cloudEvent.Subject)"
-         Write-Host "  Id: $($cloudEvent.Id)"
-         Write-Host "  Data: $($cloudEvent.Data)"
          Get-Handler -CloudEvent $cloudEvent -Response $context.Response
 
          $context.Response.Close();
@@ -71,8 +66,6 @@ if(${env:PORT}) {
 } else {
    $url = "http://*:8080/"
 }
-
-Write-Host "Listening URL: ${url}"
 
 # 1. Start CloudEvent Listener
 while($true) {
