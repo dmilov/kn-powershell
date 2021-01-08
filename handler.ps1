@@ -8,7 +8,13 @@ Function Get-Handler {
    Write-Host "  Source: $($cloudEvent.Source)"
    Write-Host "  Subject: $($cloudEvent.Subject)"
    Write-Host "  Id: $($cloudEvent.Id)"
-   Write-Host "  Data: $($cloudEvent.data.Key)"
+   if ($cloudEvent.data.data -ne $null) {
+     # structured
+     Write-Host "  Data.Data.Key: $($cloudEvent.data.data.Key)"
+   } else {
+     # binary
+     Write-Host "  Data.Key: $($cloudEvent.data.Key)"
+   }
 
    $response.StatusCode = [int]([System.Net.HttpStatusCode]::OK)
 }

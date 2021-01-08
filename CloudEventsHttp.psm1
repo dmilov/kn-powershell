@@ -120,11 +120,11 @@ param(
 
    if ($ContentMode -eq [CloudNative.CloudEvents.ContentMode]::Binary) {
       $bodyData = $null
-      
+
       if ($cloudEvent.DataContentType -ne $null) {
          $result.Headers.Add('Content-Type', $cloudEvent.DataContentType)
       }
-      
+
       if ($cloudEvent.Data -is [byte[]]) {
          $bodyData = $cloudEvent.Data
       }
@@ -197,6 +197,7 @@ param(
             $jObject = [Newtonsoft.Json.Linq.JObject]::Parse($json)
             $formatter = New-Object 'CloudNative.CloudEvents.JsonEventFormatter'
             $result = $formatter.DecodeJObject($jObject, $null)
+            $result.Data = $result.Data.ToString() | ConvertFrom-Json -AsHashtable -Depth 10
          }
          else
          {
@@ -253,7 +254,7 @@ param(
             $cloudEvent.DataContentType = New-Object 'System.Net.Mime.ContentType' -ArgumentList @($Headers['Content-Type'][0])
          }
 
-         $cloudEvent.Data = $Body
+         $cloudEvent.Data = [System.Text.Encoding]::UTF8.GetString($Body) | ConvertFrom-Json -AsHashtable -Depth 10
 
          $result = $cloudEvent
       }
